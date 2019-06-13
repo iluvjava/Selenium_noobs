@@ -7,6 +7,8 @@ from selenium.webdriver.common.keys import Keys
 import time
 
 import urllib as ul
+
+from pathlib import Path
   
 def main():
     """
@@ -36,6 +38,7 @@ def main():
     wd = WebdriverBridge()
     wd.load(theurl)
     dlanchor = wd.select("a.dev-page-download")
+    wd.inject_js("js.js")
     dlanchor.click()
     return
 
@@ -115,6 +118,20 @@ class WebdriverBridge:
         return
     
     # make a method that inject JS into the current page. 
+    def inject_js(self, arg):
+        """
+            Given a string this method will try to run the js commands
+            arg: a string. 
+                If it's there exists a file when the given string is 
+                viewed as path, then it will inject the content of the 
+                file into the WB
+            else it will just run the command as JS. 
+        """
+        if(Path(arg).is_file):
+            with open(arg, "r") as f:
+                injectcontent = f.read()
+            return self._Webdriver.execute_script(injectcontent)
+        return self._Webdriver.execute_script(arg)
 
 def token_method():
     """
