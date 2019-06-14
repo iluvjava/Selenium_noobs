@@ -17,3 +17,14 @@ C:\Users\Administrator\source\repos\VSPythonProject\WithThePython\obj\Debug\netc
 C:\Users\Administrator\source\repos\VSPythonProject\WithThePython\obj\Debug\netcoreapp2.1\WithThePython.AssemblyInfo.cs
 C:\Users\Administrator\source\repos\VSPythonProject\WithThePython\obj\Debug\netcoreapp2.1\WithThePython.dll
 C:\Users\Administrator\source\repos\VSPythonProject\WithThePython\obj\Debug\netcoreapp2.1\WithThePython.pdb
+C:\Users\victo\source\repos\Selenium_noobs\WithThePython\bin\Debug\netcoreapp2.1\WithThePython.deps.json
+C:\Users\victo\source\repos\Selenium_noobs\WithThePython\bin\Debug\netcoreapp2.1\WithThePython.runtimeconfig.json
+C:\Users\victo\source\repos\Selenium_noobs\WithThePython\bin\Debug\netcoreapp2.1\WithThePython.runtimeconfig.dev.json
+C:\Users\victo\source\repos\Selenium_noobs\WithThePython\bin\Debug\netcoreapp2.1\WithThePython.dll
+C:\Users\victo\source\repos\Selenium_noobs\WithThePython\bin\Debug\netcoreapp2.1\WithThePython.pdb
+C:\Users\victo\source\repos\Selenium_noobs\WithThePython\obj\Debug\netcoreapp2.1\WithThePython.csprojAssemblyReference.cache
+C:\Users\victo\source\repos\Selenium_noobs\WithThePython\obj\Debug\netcoreapp2.1\WithThePython.csproj.CoreCompileInputs.cache
+C:\Users\victo\source\repos\Selenium_noobs\WithThePython\obj\Debug\netcoreapp2.1\WithThePython.AssemblyInfoInputs.cache
+C:\Users\victo\source\repos\Selenium_noobs\WithThePython\obj\Debug\netcoreapp2.1\WithThePython.AssemblyInfo.cs
+C:\Users\victo\source\repos\Selenium_noobs\WithThePython\obj\Debug\netcoreapp2.1\WithThePython.dll
+C:\Users\victo\source\repos\Selenium_noobs\WithThePython\obj\Debug\netcoreapp2.1\WithThePython.pdb
