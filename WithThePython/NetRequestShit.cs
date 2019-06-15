@@ -97,8 +97,20 @@ namespace WithThePython
         /// <returns></returns>
         public async Task<String> OpenWebAsync()
         {
+            WebClient wc = new WebClient();
             return null;
         }
+
+        /*What we learned: 
+         * Webclient: 
+         *  - 
+         * 
+         * 
+         * 
+         * 
+         */
+
+
     }
 
 

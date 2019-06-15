@@ -93,7 +93,7 @@ namespace WithThePython
                 var response = mlr.MakeGetRequestAsync().Result;
                 print("Status: " + response.StatusCode);
                 print("headers: " + response.Headers);
-                print("Content:"+ response.Content.ReadAsStringAsync().Result);
+                //print("Content:"+ response.Content.ReadAsStringAsync().Result);
 
             }
             Thread.Sleep(-1);

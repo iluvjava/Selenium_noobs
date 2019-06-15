@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\UnitTest",
+    "\\WithThePython"
   ],
-  "SelectedNode": "\\BeautifulSoup.py",
+  "SelectedNode": "\\WithThePython\\Program.cs",
   "PreviewInSolutionExplorer": false
 }
