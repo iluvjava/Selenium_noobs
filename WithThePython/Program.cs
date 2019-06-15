@@ -15,6 +15,10 @@ namespace WithThePython
     /// <summary>
     /// In this class, we investiate the process of making get or/and POST request in the 
     /// c# programming language. 
+    /// <remarks>
+    /// making get request: 
+    /// https://social.msdn.microsoft.com/Forums/en-US/509664eb-6053-490d-9521-6ddc2573f873/setting-cookies-in-httpclient?forum=winappswithcsharp
+    /// </remarks>
     /// </summary>
     public class Program
     {
@@ -25,38 +29,53 @@ namespace WithThePython
         /// <param name="args"></param>
         static void Main(string[] args)
         {
+            //{
+            //    Console.WriteLine("---");
+            //    string res = makeGETRequest();
+            //    IDictionary<string, object> j = JsonDecode(res);
+            //    Console.WriteLine(res);
+            //    Console.WriteLine("The URL is: \n");
+            //    Console.WriteLine(j["url"]);
+            //}
+            //Console.WriteLine("Testing The Pokemon POST Api:\n");
+            //{
+            //    string pokemonurlget =
+            //        "https://courses.cs.washington.edu/courses/cse154/webservices/pokedex/game.php";
+            //    // Read text file. 
+            //
+            //    Console.WriteLine(MakePostRequest(pokemonurlget).Result);
+            //
+            //    // string Post_Data = System.IO.File.ReadAllText("Formdata.txt");
+            //    // Console.WriteLine(Post_Data);
+            //    // Task<string> response = PostAsync
+            //    //     (
+            //    //         pokemonurlget,
+            //    //         Post_Data,
+            //    //         "multipart/form-data; boundary=----WebKitFormBoundaryPAFE87rrx5myY4GX"
+            //    //     );
+            //    // string responsetext = response.Result;
+            //    // Console.WriteLine(responsetext);
+            //   
+            //}
+            //Console.WriteLine("Make another get request using the new method: ");
+            //{
+            //    string theurl = @"https://backend.deviantart.com/oembed?url=http%3A%2F%2Ffav.me%2Fd2enxz7";
+            //    //Console.WriteLine(MakeGetRequest(theurl).Result);
+            //}
+            //Thread.Sleep(-1);
             {
-                Console.WriteLine("---");
-                string res = makeGETRequest();
-                IDictionary<string, object> j = JsonDecode(res);
-                Console.WriteLine(res);
-                Console.WriteLine("The URL is: \n");
-                Console.WriteLine(j["url"]);
-            }
-            Console.WriteLine("Testing The Pokemon POST Api:\n");
-            {
-                string pokemonurlget =
-                    "https://courses.cs.washington.edu/courses/cse154/webservices/pokedex/game.php";
-                // Read text file. 
-
-                Console.WriteLine(MakePostRequest(pokemonurlget).Result);
-
-                // string Post_Data = System.IO.File.ReadAllText("Formdata.txt");
-                // Console.WriteLine(Post_Data);
-                // Task<string> response = PostAsync
-                //     (
-                //         pokemonurlget,
-                //         Post_Data,
-                //         "multipart/form-data; boundary=----WebKitFormBoundaryPAFE87rrx5myY4GX"
-                //     );
-                // string responsetext = response.Result;
-                // Console.WriteLine(responsetext);
-               
-            }
-            Console.WriteLine("Make another get request using the new method: ");
-            {
+                Console.WriteLine("Try to make a get request to deviantart.");
                 string theurl = @"https://backend.deviantart.com/oembed?url=http%3A%2F%2Ffav.me%2Fd2enxz7";
-                Console.WriteLine(MakeGetRequest(theurl).Result);
+                Console.WriteLine("The url: " + theurl);
+                MyLittleRequest mlr = new MyLittleRequest(theurl);
+                HttpResponseMessage response = mlr.MakeGetRequest().Result;
+                Console.WriteLine("Is successful status code: " + response.IsSuccessStatusCode);
+                Console.WriteLine(response.Headers.ToString());
+                Console.WriteLine("Content: ");
+                Console.WriteLine(response.Content.ReadAsStringAsync().Result);
+            }
+            {
+
             }
             Thread.Sleep(-1);
 
@@ -192,32 +211,67 @@ namespace WithThePython
         }
 
 
-        public static async Task<string> MakePostRequest(string url)
+        public static async Task<string> MakePostRequest
+        (
+            string url,
+            IDictionary<string, string> body = null
+        )
         {
-            HttpClient client = new HttpClient();
-            var values = new Dictionary<string, string>
+            if (body == null)
             {
-               { "startgame", "true" },
-               { "mypokemon", "detective-pikachu" }
-            };
-
-            var content = new FormUrlEncodedContent(values);
+                body = new Dictionary<string, string>();
+                body[""] = "";
+            }
+            HttpClient client = new HttpClient();
+            var content = new FormUrlEncodedContent(body);
             var response = await client.PostAsync(url, content);
             var responseString = await response.Content.ReadAsStringAsync();
             return responseString;
         }
 
         public static async Task<string> MakeGetRequest
-            (
-                string url,
-                HttpRequestHeaders header = null
-            )
+        (
+            string url
+        )
         {
             HttpClient client = new HttpClient();
-            if (header != null) client.DefaultRequestHeaders = header;
             var response = await client.GetAsync(url);
             string responsestring = await response.Content.ReadAsStringAsync();
             return responsestring;
         }
+
+
+
+        /// <summary>
+        /// Attempt to us this function to kill all kinds of reqeust on the web, 
+        /// if it gets harder, we will need a class. 
+        /// </summary>
+        /// <param>
+        /// 
+        /// </param>
+        /// <returns>
+        /// </returns>
+        //public static async Task<object> UltimateRequest
+        //(
+        //    string url
+        //)
+        //{
+        //    //Uri uri = new Uri(url);
+        //    //HttpClientHandler handler = new HttpClientHandler();
+        //    //handler.CookieContainer = new CookieContainer();
+        //    //
+        //    //handler.CookieContainer.Add(uri, new Cookie("name", "value")); // Adding a Cookie
+        //    //HttpClient client = new HttpClient(handler);
+        //    //HttpResponseMessage response = await client.GetAsync(uri);
+        //    //CookieCollection collection = handler.CookieContainer.GetCookies(uri); // Retrieving a Cookie
+        //
+        //    Uri uri = new Uri(url);
+        //    HttpClientHandler handler = new HttpClientHandler();
+        //    handler.CookieContainer = new CookieContainer();
+        //
+        //}
+
+
+        
     }
 }
